@@ -24,6 +24,7 @@ const Cart = (props) => {
     e.preventDefault();
     setNestedModal(!nestedModal);
     if (product !== undefined) {
+      handleRangeChnage(product.quantity);
       setProduct(product);
       setIndex(index);
     }
@@ -42,7 +43,7 @@ const Cart = (props) => {
   return (
     <div>
       <Button color="danger" onClick={toggle}>
-        Cart Details
+        Cart
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>Modal title</ModalHeader>
@@ -126,9 +127,7 @@ const Cart = (props) => {
                     min="0"
                     max={productItem.available_quantity}
                     id="customRange2"
-                    onChange={(e) =>
-                      handleRangeChnage(e.target.value, product_index)
-                    }
+                    onChange={(e) => handleRangeChnage(e.target.value)}
                   />
                 ) : null}
               </div>
